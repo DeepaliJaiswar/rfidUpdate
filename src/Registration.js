@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const Registration = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -11,13 +10,30 @@ const Registration = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+
+    // Basic validation
+    if (!firstName || !lastName || !email || !currentYear || !finalYear || !numericRFID) {
+      alert('All fields are required');
+      return;
+    }
+
+    // Numeric RFID validation (optional)
+    const numericRFIDValue = parseInt(numericRFID);
+    if (isNaN(numericRFIDValue)) {
+      alert('Numeric RFID must be a valid number');
+      return;
+    }
+
+    // If all validations pass, you can proceed with your registration logic
     console.log('First Name:', firstName);
     console.log('Last Name:', lastName);
     console.log('Email:', email);
     console.log('Current Year:', currentYear);
     console.log('Final Year:', finalYear);
     console.log('Numeric RFID:', numericRFID);
-    // Implement your registration logic here
+
+    // Replace the alert with your actual registration logic, e.g., API call to your server
+    alert('Registration successful!');
   };
 
   return (
